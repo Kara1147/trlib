@@ -1,5 +1,5 @@
-# autoconf-skel
-autoconf skeleton for my projects
+# tr library
+A c library that creates the functionality of tr, because it's handy.
 
 ## Library requirements
 *none*

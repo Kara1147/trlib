@@ -23,9 +23,9 @@
 #  
 
 AC_PREREQ([2.69])
-AC_INIT([skel], [0.1.0], [bugs@kara-online.net], [skel], [https://github.com/Kara1147/autoconf-skel])
+AC_INIT([tr library], [0.1.0], [bugs@kara-online.net], [trlib], [https://github.com/Kara1147/trlib])
 
-m4_include([ax_valgrind_check.m4])
+m4_include([m4/ax_valgrind_check.m4])
 
 AC_ARG_ENABLE(debug,
   [AS_HELP_STRING([--enable-debug], [Enable debug messages (default is no)])],
@@ -60,25 +60,32 @@ AM_INIT_AUTOMAKE([subdir-objects])
 WARN_CFLAGS="-W -Wall -Wunused -Werror"
 AC_SUBST(WARN_CFLAGS)
 AC_CONFIG_MACRO_DIRS([m4])
-#AC_CONFIG_SUBDIRS([include/krossock])
 AC_CONFIG_SRCDIR([src/])
 AC_CONFIG_HEADERS([config.h])
 AX_VALGRIND_DFLT([memcheck], [on])
 AX_VALGRIND_CHECK
 
 #program config
+AC_PROG_CC
+AC_PROG_RANLIB
 
 #headers
 
 #types
+AC_TYPE_SIZE_T
 
 #functions
+AC_FUNC_REALLOC
+AC_CHECK_FUNCS([memchr])
+AC_CHECK_FUNCS([memmove])
+AC_CHECK_FUNCS([strchr])
+AC_CHECK_FUNCS([strdup])
+AC_CHECK_FUNCS([strstr])
 
 #makefiles
 AC_CONFIG_FILES([
   Makefile
   src/Makefile
   tests/Makefile
-  include/Makefile
 ])
 AC_OUTPUT
